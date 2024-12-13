@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -43,13 +45,16 @@ public class UserServiceImpl implements UserService {
 
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         User user = UserMapper.INSTANCE.mapToUser(request);
+        user.setUserId(UUID.randomUUID().toString());
         user.setPassword(encodedPassword);
         user.setEnabled(false);
         userRepository.save(user);
 
         UserRole userRole = UserRole.builder()
+                .userRoleId(UUID.randomUUID().toString())
                 .user(user)
                 .role(roleRepository.findByName("Kasir"))
+                .createdBy(user.getUserId())
                 .build();
         userRoleRepository.save(userRole);
 

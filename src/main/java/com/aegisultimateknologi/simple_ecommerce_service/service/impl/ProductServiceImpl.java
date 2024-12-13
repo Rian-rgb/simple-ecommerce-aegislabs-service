@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     public DataResponse create(CreateProductRequest request) {
 
         Product product = ProductMapper.INSTANCE.mapToProduct(request);
+        product.setProductId(UUID.randomUUID().toString());
         productRepository.save(product);
 
         return new DataResponse(HttpStatus.OK.value(), "Create data berhasil", null, null);

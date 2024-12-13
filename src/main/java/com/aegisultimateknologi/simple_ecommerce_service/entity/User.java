@@ -21,7 +21,7 @@ public class User {
 
     @Id
     @Column(length = 36, unique = true)
-    private String userId = UUID.randomUUID().toString();
+    private String userId;
 
     @Column(unique = true, nullable = false)
     private String username;

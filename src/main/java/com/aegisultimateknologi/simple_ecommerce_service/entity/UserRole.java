@@ -21,7 +21,7 @@ public class UserRole {
 
     @Id
     @Column(length = 36, unique = true)
-    private String userRoleId = UUID.randomUUID().toString();
+    private String userRoleId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
