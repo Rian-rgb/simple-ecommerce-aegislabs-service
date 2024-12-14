@@ -1,6 +1,7 @@
 package com.aegisultimateknologi.simple_ecommerce_service.controller;
 
 import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.BadRequestException;
 import com.aegisultimateknologi.simple_ecommerce_service.request.auth.AuthRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.user.UserRegisterRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.response.AuthResponse;
@@ -34,6 +35,9 @@ public class AuthController {
         UserInfo userInfo = authService.authenticate(request);
         String token = jwtService.generateToken(userInfo);
         AuthResponse authResponse = AuthResponse.fromUserInfo(userInfo, token);
+        if (!authResponse.isEnabled()) {
+            throw new BadRequestException("Akun Anda belum diaktifkan. Silakan tunggu konfirmasi dari admin");
+        }
 
         DataResponse response =
                 new DataResponse(HttpStatus.CREATED.value(), "Login berhasil", null, authResponse);

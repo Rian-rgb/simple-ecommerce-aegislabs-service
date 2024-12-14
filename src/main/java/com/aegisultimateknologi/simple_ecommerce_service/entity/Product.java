@@ -25,7 +25,7 @@ public class Product {
 
     @Id
     @Column(length = 36, unique = true)
-    private String productId = UUID.randomUUID().toString();
+    private String productId;
 
     @Column(length = 50)
     private String name;

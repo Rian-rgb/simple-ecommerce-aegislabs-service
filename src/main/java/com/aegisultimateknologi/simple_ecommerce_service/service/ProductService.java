@@ -3,9 +3,7 @@ package com.aegisultimateknologi.simple_ecommerce_service.service;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.CreateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.UpdateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
-import com.aegisultimateknologi.simple_ecommerce_service.response.GetProductResponse;
-import com.aegisultimateknologi.simple_ecommerce_service.response.PaginationGetProductResponse;
-import org.springframework.data.domain.Page;
+import com.aegisultimateknologi.simple_ecommerce_service.response.PageDataResponse;
 import org.springframework.data.domain.Pageable;
 
 public interface ProductService {
@@ -18,5 +16,5 @@ public interface ProductService {
 
     DataResponse deleteById(String id);
 
-    PaginationGetProductResponse findByPage(Pageable pageable);
+    PageDataResponse findByPage(Pageable pageable);
 }

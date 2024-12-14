@@ -25,7 +25,4 @@ public class CreateProductRequest {
 
     @Positive(message = "Harga harus lebih besar dari 0")
     private BigDecimal price;
-
-    @NotBlank(message = "Created by wajib diisi")
-    private String createdBy;
 }

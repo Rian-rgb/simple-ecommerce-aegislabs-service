@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -21,7 +21,7 @@ public class Sales {
 
     @Id
     @Column(length = 36, unique = true)
-    private String salesId = UUID.randomUUID().toString();
+    private String salesId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -46,5 +46,10 @@ public class Sales {
 
     @Column(length = 36)
     private String updatedBy;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal totalPrice;
+
+    private Integer amountProductBuy;
 
 }

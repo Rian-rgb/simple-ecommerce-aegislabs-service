@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public class ValidateRoleUtil {
 
-    public static void validateRole(String roleUser) {
+    public static UserInfo validateRole(String roleUser) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserInfo userInfo = (UserInfo) authentication.getPrincipal();
@@ -15,5 +15,7 @@ public class ValidateRoleUtil {
         if (roleUser.equalsIgnoreCase(userInfo.getRole().getName())) {
             throw new ForbiddenException("Pengguna tidak diizinkan");
         }
+
+        return userInfo;
     }
 }

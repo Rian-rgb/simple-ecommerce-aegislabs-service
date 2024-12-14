@@ -3,7 +3,7 @@ package com.aegisultimateknologi.simple_ecommerce_service.controller;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.CreateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.UpdateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
-import com.aegisultimateknologi.simple_ecommerce_service.response.PaginationGetProductResponse;
+import com.aegisultimateknologi.simple_ecommerce_service.response.PageDataResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.service.ProductService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @GetMapping("/page")
-    public ResponseEntity<PaginationGetProductResponse> findByPage(
+    public ResponseEntity<PageDataResponse> findByPage(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.nio.file.AccessDeniedException;
 import java.security.SignatureException;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +51,6 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody DataResponse handleGenericException(Exception e, HttpServletResponse response) {
 
         if (e instanceof BadCredentialsException ||
@@ -70,6 +68,7 @@ public class ApiExceptionHandler {
                     .build();
         }
 
+        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         log.error(e.getMessage());
         return DataResponse.builder()
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
@@ -122,7 +121,7 @@ public class ApiExceptionHandler {
     public @ResponseBody DataResponse handleForbiddenException(ForbiddenException e) {
         log.error(e.getMessage());
         return DataResponse.builder()
-                .statusCode(HttpStatus.FORBIDDEN.value())
+                .statusCode(HttpStatus.CONFLICT.value())
                 .errorMessage(e.getMessage())
                 .build();
     }

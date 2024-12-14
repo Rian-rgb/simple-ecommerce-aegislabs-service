@@ -1,13 +1,10 @@
 package com.aegisultimateknologi.simple_ecommerce_service.response;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Role;
 import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -19,6 +16,7 @@ public class AuthResponse {
     private String userId;
     private String username;
     private String email;
+    private boolean enabled;
     private String role;
 
     public static AuthResponse fromUserInfo(UserInfo userInfo, String token) {
@@ -27,6 +25,7 @@ public class AuthResponse {
                 .userId(userInfo.getUser().getUserId())
                 .username(userInfo.getUsername())
                 .email(userInfo.getUser().getEmail())
+                .enabled(userInfo.getUser().isEnabled())
                 .role(userInfo.getRole().getName())
                 .build();
     }

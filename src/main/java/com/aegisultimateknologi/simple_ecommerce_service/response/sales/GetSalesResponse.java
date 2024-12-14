@@ -1,24 +1,22 @@
-package com.aegisultimateknologi.simple_ecommerce_service.response;
+package com.aegisultimateknologi.simple_ecommerce_service.response.sales;
 
+import com.aegisultimateknologi.simple_ecommerce_service.response.product.GetProductResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetProductResponse {
+public class GetSalesResponse {
 
-    private String name;
+    private GetProductResponse product;
 
-    private String description;
-
-    private Integer stok;
+    private boolean sold;
 
     private LocalDateTime createdAt;
 
@@ -27,7 +25,4 @@ public class GetProductResponse {
     private LocalDateTime updatedAt;
 
     private String updatedBy;
-
-    private BigDecimal price;
-
 }

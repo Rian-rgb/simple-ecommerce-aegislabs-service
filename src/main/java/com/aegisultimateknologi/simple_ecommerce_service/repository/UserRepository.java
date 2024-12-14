@@ -1,7 +1,8 @@
 package com.aegisultimateknologi.simple_ecommerce_service.repository;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Product;
 import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -22,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, String> {
             email =:keyword
             """)
     Optional<User> findByKeyword(String keyword);
+
+    Page<User> findByEnabled(Pageable pageable, boolean enabled);
 }
