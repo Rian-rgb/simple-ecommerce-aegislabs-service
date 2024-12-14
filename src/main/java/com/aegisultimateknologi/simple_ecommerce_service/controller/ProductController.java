@@ -5,6 +5,7 @@ import com.aegisultimateknologi.simple_ecommerce_service.request.product.UpdateP
 import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.response.PaginationGetProductResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.service.ProductService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("products")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "Bearer")
 public class ProductController {
 
     private final ProductService productService;

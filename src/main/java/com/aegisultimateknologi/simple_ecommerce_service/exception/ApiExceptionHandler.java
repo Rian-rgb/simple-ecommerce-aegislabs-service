@@ -2,8 +2,14 @@ package com.aegisultimateknologi.simple_ecommerce_service.exception;
 
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.*;
 import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
+import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AccountStatusException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,6 +17,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.nio.file.AccessDeniedException;
+import java.security.SignatureException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +53,23 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public @ResponseBody DataResponse handleGenericException(Exception e) {
+    public @ResponseBody DataResponse handleGenericException(Exception e, HttpServletResponse response) {
+
+        if (e instanceof BadCredentialsException ||
+            e instanceof AccountStatusException ||
+            e instanceof AccessDeniedException ||
+            e instanceof SignatureException ||
+            e instanceof ExpiredJwtException ||
+            e instanceof AuthenticationException ||
+            e instanceof InsufficientAuthenticationException
+        ) {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            return DataResponse.builder()
+                    .statusCode(HttpStatus.FORBIDDEN.value())
+                    .errorMessage(e.getMessage())
+                    .build();
+        }
+
         log.error(e.getMessage());
         return DataResponse.builder()
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
@@ -88,6 +113,16 @@ public class ApiExceptionHandler {
         log.error(e.getMessage());
         return DataResponse.builder()
                 .statusCode(HttpStatus.CONFLICT.value())
+                .errorMessage(e.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public @ResponseBody DataResponse handleForbiddenException(ForbiddenException e) {
+        log.error(e.getMessage());
+        return DataResponse.builder()
+                .statusCode(HttpStatus.FORBIDDEN.value())
                 .errorMessage(e.getMessage())
                 .build();
     }

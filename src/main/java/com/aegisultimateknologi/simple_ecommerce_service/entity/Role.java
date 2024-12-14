@@ -1,7 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.entity;
 
 
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +21,6 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roles_id")
     private Long roleId;
 
     @Column(unique = true, nullable = false, length = 50)

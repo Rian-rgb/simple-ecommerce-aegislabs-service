@@ -2,6 +2,7 @@ package com.aegisultimateknologi.simple_ecommerce_service.request.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,9 +25,9 @@ public class UserRegisterRequest {
 
     @NotBlank(message = "Password wajib diisi")
     @Size(min = 8, max = 100, message = "Password harus antara 8 hingga 100 karakter")
-//    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$)",
-//            message = "Password harus mengandung setidaknya satu digit, satu huruf kecil, satu huruf besar, " +
-//                    "satu karakter spesial, dan tidak boleh ada spasi")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",
+            message = "Password harus mengandung setidaknya satu digit, satu huruf kecil, satu huruf besar, " +
+                    "satu karakter spesial, dan tidak boleh ada spasi")
     private String password;
 
     @NotBlank(message = "Password konfirmasi wajib diisi")

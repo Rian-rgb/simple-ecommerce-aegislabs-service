@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.Base64;
 
 @Configuration
 @Data
@@ -22,6 +22,7 @@ public class JwtSecretConfig {
 
     @Bean
     public SecretKey signKey() {
-        return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        byte[] decodedKey = Base64.getDecoder().decode(jwtSecret);
+        return Keys.hmacShaKeyFor(decodedKey);
     }
 }

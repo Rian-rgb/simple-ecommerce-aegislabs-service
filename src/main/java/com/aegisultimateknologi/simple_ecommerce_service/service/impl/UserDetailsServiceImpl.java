@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -25,13 +23,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userRepository.findByKeyword(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found with username " + username));
+                .orElseThrow(() -> new UserNotFoundException(
+                        "Pengguna tidak ditemukan dengan nama pengguna " + username));
 
-        List<Role> roles = roleRepository.findByUserId(user.getUserId());
+        Role role = roleRepository.findByUserId(user.getUserId());
 
         return UserInfo.builder()
                 .user(user)
-                .roles(roles)
+                .role(role)
                 .build();
     }
 }

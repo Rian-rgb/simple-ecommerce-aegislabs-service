@@ -13,6 +13,7 @@ import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.response.GetProductResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.response.PaginationGetProductResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.service.ProductService;
+import com.aegisultimateknologi.simple_ecommerce_service.util.ValidateRoleUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public DataResponse create(CreateProductRequest request) {
 
+        ValidateRoleUtil.validateRole("Kasir");
         Product product = ProductMapper.INSTANCE.mapToProduct(request);
         product.setProductId(UUID.randomUUID().toString());
         productRepository.save(product);
@@ -43,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public DataResponse update(UpdateProductRequest request) {
 
+        ValidateRoleUtil.validateRole("Kasir");
         productRepository.findById(request.getProductId())
                 .orElseThrow(() -> new NotFoundException("Product tidak ditemukan untuk id " + request.getProductId()));
         Product existingProduct = ProductMapper.INSTANCE.mapToProduct(request);
@@ -66,6 +69,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public DataResponse deleteById(String id) {
 
+        ValidateRoleUtil.validateRole("Kasir");
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Product tidak ditemukan untuk id " + id));
 
