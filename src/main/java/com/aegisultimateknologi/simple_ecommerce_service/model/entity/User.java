@@ -1,9 +1,6 @@
-package com.aegisultimateknologi.simple_ecommerce_service.entity;
+package com.aegisultimateknologi.simple_ecommerce_service.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -20,26 +16,30 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product")
-public class Product {
+@Table(name = "users")
+public class User {
 
     @Id
     @Column(length = 36, unique = true)
-    private String productId;
+    private String userId;
 
-    @Column(length = 50)
-    private String name;
+    @Column(unique = true, nullable = false)
+    private String username;
 
-    private String description;
+    @Column(unique = true, nullable = false)
+    private String email;
 
     @Column(nullable = false)
-    private Integer stok;
+    private String password;
+
+    @Column(nullable = false)
+    private boolean enabled;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(length = 36, nullable = false)
+    @Column(length = 36)
     private String createdBy;
 
     @UpdateTimestamp
@@ -47,8 +47,5 @@ public class Product {
 
     @Column(length = 36)
     private String updatedBy;
-
-    @Column(precision = 10, scale = 2)
-    private BigDecimal price;
 
 }

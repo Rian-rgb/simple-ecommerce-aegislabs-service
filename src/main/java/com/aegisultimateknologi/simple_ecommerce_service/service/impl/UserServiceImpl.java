@@ -1,7 +1,7 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserRole;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.User;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserRole;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.BadRequestException;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.EmailAlreadyExistsException;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.NotFoundException;
@@ -19,7 +19,6 @@ import com.aegisultimateknologi.simple_ecommerce_service.util.ConvertToPageUtil;
 import com.aegisultimateknologi.simple_ecommerce_service.util.ValidateRoleUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -38,7 +37,6 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
 
-    @SneakyThrows
     @Override
     public DataResponse changeUserActive(UpdateActiveUserRequest request) {
         try {
@@ -59,7 +57,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @SneakyThrows
     @Override
     public PageDataResponse findByPage(Pageable pageable, boolean enabled) {
         try {
@@ -76,7 +73,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @SneakyThrows
     @Transactional
     @Override
     public DataResponse register(UserRegisterRequest request) {

@@ -1,6 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.mapper;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Product;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Product;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.CreateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.UpdateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.response.product.GetProductResponse;

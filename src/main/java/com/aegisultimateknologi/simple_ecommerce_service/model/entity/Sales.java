@@ -1,4 +1,4 @@
-package com.aegisultimateknologi.simple_ecommerce_service.entity;
+package com.aegisultimateknologi.simple_ecommerce_service.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,28 +8,31 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_role")
-public class UserRole {
+@Table(name = "sales")
+public class Sales {
 
     @Id
     @Column(length = 36, unique = true)
-    private String userRoleId;
+    private String salesId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Column(nullable = false)
+    private boolean sold;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -43,5 +46,10 @@ public class UserRole {
 
     @Column(length = 36)
     private String updatedBy;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal totalPrice;
+
+    private Integer amountProductBuy;
 
 }

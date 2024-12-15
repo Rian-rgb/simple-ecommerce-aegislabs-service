@@ -1,6 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.InvalidPasswordException;
 import com.aegisultimateknologi.simple_ecommerce_service.request.auth.AuthRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.service.AuthService;

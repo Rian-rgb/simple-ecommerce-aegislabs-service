@@ -1,8 +1,7 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
 import com.aegisultimateknologi.simple_ecommerce_service.config.JwtSecretConfig;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Role;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.service.JwtService;
 import com.aegisultimateknologi.simple_ecommerce_service.util.DateUtil;
 import io.jsonwebtoken.JwtException;
@@ -15,9 +14,7 @@ import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

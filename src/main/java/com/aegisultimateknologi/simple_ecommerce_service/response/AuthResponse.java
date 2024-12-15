@@ -1,6 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.response;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

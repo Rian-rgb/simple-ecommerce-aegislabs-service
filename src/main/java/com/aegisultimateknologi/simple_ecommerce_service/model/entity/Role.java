@@ -1,4 +1,4 @@
-package com.aegisultimateknologi.simple_ecommerce_service.entity;
+package com.aegisultimateknologi.simple_ecommerce_service.model.entity;
 
 
 import jakarta.persistence.*;

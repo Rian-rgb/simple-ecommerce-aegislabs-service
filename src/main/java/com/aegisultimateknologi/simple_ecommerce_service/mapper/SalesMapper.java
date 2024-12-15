@@ -1,8 +1,8 @@
 package com.aegisultimateknologi.simple_ecommerce_service.mapper;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Product;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Sales;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Product;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Sales;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

@@ -1,6 +1,9 @@
-package com.aegisultimateknologi.simple_ecommerce_service.entity;
+package com.aegisultimateknologi.simple_ecommerce_service.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,29 +13,27 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "sales")
-public class Sales {
+@Table(name = "product")
+public class Product {
 
     @Id
     @Column(length = 36, unique = true)
-    private String salesId;
+    private String productId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(length = 50)
+    private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private String description;
 
     @Column(nullable = false)
-    private boolean sold;
+    private Integer stok;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -48,8 +49,6 @@ public class Sales {
     private String updatedBy;
 
     @Column(precision = 10, scale = 2)
-    private BigDecimal totalPrice;
-
-    private Integer amountProductBuy;
+    private BigDecimal price;
 
 }

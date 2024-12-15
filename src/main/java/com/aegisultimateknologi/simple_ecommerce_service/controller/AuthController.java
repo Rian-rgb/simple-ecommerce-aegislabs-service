@@ -1,6 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.controller;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.BadRequestException;
 import com.aegisultimateknologi.simple_ecommerce_service.request.auth.AuthRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.user.UserRegisterRequest;

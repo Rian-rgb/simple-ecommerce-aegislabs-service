@@ -1,9 +1,9 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Product;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Sales;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Product;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Sales;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.User;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.BadRequestException;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.NotFoundException;
 import com.aegisultimateknologi.simple_ecommerce_service.mapper.SalesMapper;
@@ -15,7 +15,6 @@ import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.service.SalesService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,7 +31,6 @@ public class SalesServiceImpl implements SalesService {
     private final ProductRepository productRepository;
     private final SalesRepository salesRepository;
 
-    @SneakyThrows
     @Transactional
     @Override
     public DataResponse create(CreateSalesRequest request) {
@@ -86,7 +84,6 @@ public class SalesServiceImpl implements SalesService {
         }
     }
 
-    @SneakyThrows
     @Transactional
     @Override
     public DataResponse updateRefund(String salesId) {

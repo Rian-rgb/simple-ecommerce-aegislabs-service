@@ -1,8 +1,8 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Product;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Sales;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Product;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Sales;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.BadRequestException;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.NotFoundException;
 import com.aegisultimateknologi.simple_ecommerce_service.mapper.ProductMapper;
@@ -11,13 +11,12 @@ import com.aegisultimateknologi.simple_ecommerce_service.repository.SalesReposit
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.CreateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.request.product.UpdateProductRequest;
 import com.aegisultimateknologi.simple_ecommerce_service.response.DataResponse;
-import com.aegisultimateknologi.simple_ecommerce_service.response.product.GetProductResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.response.PageDataResponse;
+import com.aegisultimateknologi.simple_ecommerce_service.response.product.GetProductResponse;
 import com.aegisultimateknologi.simple_ecommerce_service.service.ProductService;
 import com.aegisultimateknologi.simple_ecommerce_service.util.ConvertToPageUtil;
 import com.aegisultimateknologi.simple_ecommerce_service.util.ValidateRoleUtil;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -34,7 +33,6 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final SalesRepository salesRepository;
 
-    @SneakyThrows
     @Override
     public DataResponse create(CreateProductRequest request) {
         try {
@@ -52,7 +50,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    @SneakyThrows
     @Override
     public DataResponse update(UpdateProductRequest request) {
         try {
@@ -71,7 +68,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    @SneakyThrows
     @Override
     public DataResponse findById(String id) {
         try {
@@ -87,7 +83,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    @SneakyThrows
     @Override
     public DataResponse deleteById(String id) {
         try {
@@ -110,7 +105,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    @SneakyThrows
     @Override
     public PageDataResponse findByPage(Pageable pageable) {
         try {

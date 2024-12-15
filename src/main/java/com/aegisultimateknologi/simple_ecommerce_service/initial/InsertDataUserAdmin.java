@@ -1,7 +1,7 @@
 package com.aegisultimateknologi.simple_ecommerce_service.initial;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserRole;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.User;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserRole;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.RoleRepository;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.UserRepository;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.UserRoleRepository;

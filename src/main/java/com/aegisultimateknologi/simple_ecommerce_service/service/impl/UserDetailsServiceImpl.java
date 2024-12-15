@@ -1,8 +1,8 @@
 package com.aegisultimateknologi.simple_ecommerce_service.service.impl;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Role;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.User;
-import com.aegisultimateknologi.simple_ecommerce_service.entity.UserInfo;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Role;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.User;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.UserInfo;
 import com.aegisultimateknologi.simple_ecommerce_service.exception.custom.UserNotFoundException;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.RoleRepository;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.UserRepository;

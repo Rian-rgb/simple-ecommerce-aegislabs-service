@@ -1,4 +1,4 @@
-package com.aegisultimateknologi.simple_ecommerce_service.entity;
+package com.aegisultimateknologi.simple_ecommerce_service.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Data
 @Builder

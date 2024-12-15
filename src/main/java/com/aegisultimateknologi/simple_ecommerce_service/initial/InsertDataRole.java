@@ -1,6 +1,6 @@
 package com.aegisultimateknologi.simple_ecommerce_service.initial;
 
-import com.aegisultimateknologi.simple_ecommerce_service.entity.Role;
+import com.aegisultimateknologi.simple_ecommerce_service.model.entity.Role;
 import com.aegisultimateknologi.simple_ecommerce_service.repository.RoleRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
