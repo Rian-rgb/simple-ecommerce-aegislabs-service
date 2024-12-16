@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
             throw new BadRequestException("Akun Anda belum diaktifkan. Silakan tunggu konfirmasi dari admin");
         }
 
-        return new DataResponse(HttpStatus.CREATED.value(), "Login berhasil", null, authResponse);
+        return new DataResponse(HttpStatus.OK.value(), "Login berhasil", null, authResponse);
 
     }
 
